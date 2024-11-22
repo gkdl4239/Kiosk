@@ -21,6 +21,7 @@ public class Menu {
     }
 
     public int showItem(){
+        System.out.println();
         System.out.println("[ "+this.categoryName.toUpperCase()+" MENU ]");
 
         IntStream.range(0,itemList.size())
@@ -40,6 +41,7 @@ public class Menu {
 
     public MenuItem getItem(int menuChoice){
         MenuItem m = itemList.get(menuChoice-1);
+        System.out.println();
         System.out.println("선택한 메뉴: "+m.getName()+" | W "+m.getPrice()+" | "+m.getExp());
         System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
         System.out.println("1. 확인\t 2. 취소");
