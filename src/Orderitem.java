@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Orderitem {
-    private List<MenuItem> orderList = new ArrayList<>();
+    private final List<MenuItem> orderList = new ArrayList<>();
 
     public void setOrderList(MenuItem menu){
         this.orderList.add(menu);
