@@ -4,7 +4,6 @@ import java.util.stream.IntStream;
 
 public class Menu {
     private final List<MenuItem> itemList = new ArrayList<>();
-
     private final String categoryName;
 
     InputMenu choice = new InputMenu();
@@ -12,7 +11,6 @@ public class Menu {
     Menu(String categoryName){
         this.categoryName = categoryName;
     }
-
 
     public String getCategoryName() {
         return categoryName;
