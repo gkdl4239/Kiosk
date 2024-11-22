@@ -70,7 +70,6 @@ public class Kiosk {
                 break;
             }else if (order > menuList.size()) {
                 System.out.println("유효한 메뉴를 입력하세요");
-                continue;
             }else {
                 Menu chosenMenu = menuList.get(order - 1);
                 int n = chosenMenu.showItem();
