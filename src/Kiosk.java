@@ -43,7 +43,17 @@ public class Kiosk {
                 System.out.println("1. 주문 \t 2. 메뉴판");
                 int check = num.menuNumber();
                 if (check == 1) {
-                    System.out.println("주문이 완료되었습니다. 금액은 W " + orderList.getTotalPrice() + " 입니다.");
+                    System.out.println("할인 정보를 입력해주세요.");
+                    System.out.println("1. 국가유공자 \t: 20%");
+                    System.out.println("2. 군인 \t: 10%");
+                    System.out.println("3. 학생 \t: 5%");
+                    System.out.println("4. 일반 \t: 0%");
+                    int discountCode = num.menuNumber();
+                    double originalPrice = orderList.getTotalPrice();
+                    Discount discount = Discount.fromCode(discountCode);
+                    double discountedPrice = discount.apply(originalPrice);
+
+                    System.out.println("주문이 완료되었습니다. 금액은 W " + discountedPrice + " 입니다.");
                     orderList.removeOrder();
                     continue;
                 } else if (check == 2) {
