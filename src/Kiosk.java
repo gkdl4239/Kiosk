@@ -17,12 +17,12 @@ public class Kiosk {
             }
             System.out.println("0. 종료");
 
-            int j = menuList.size();
+            int j = menuList.size()+1;
             if(!orderList.getOrderList().isEmpty()) {
                 System.out.println();
                 System.out.println("[ ORDER MENU ]");
                 System.out.println(j + ". Orders");
-                System.out.println((j + 1) + ". Cancel");
+                System.out.println((j+1) + ". Cancel");
             }
 
             int order = num.menuNumber();
