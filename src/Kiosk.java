@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Kiosk {
     private final List<Menu> menuList;
@@ -12,6 +13,7 @@ public class Kiosk {
 
     public void start() {
         while(true){
+            System.out.println();
             System.out.println("[ MAIN MENU ]");
             for (int i = 1; i < menuList.size() + 1; i++) {
                 System.out.println(i + ". "+menuList.get(i-1).getCategoryName());
@@ -47,10 +49,13 @@ public class Kiosk {
                 System.out.println("아래와 같이 주문 하시겠습니까?");
                 System.out.println();
                 System.out.println("[ Orders ]");
-                for (MenuItem orders : orderList.getOrderList()) {
-                    String formatName = String.format("%-20s",orders.getName());
-                    System.out.println(formatName + "| W " + orders.getPrice() + " | " + orders.getExp());
-                }
+
+                IntStream.range(0,orderList.getOrderList().size())
+                        .forEach(i->{
+                            MenuItem orders = orderList.getOrderList().get(i);
+                            String formatName = String.format("%-20s",orders.getName());
+                            System.out.println((i+1)+". "+formatName+"| W "+orders.getPrice()+" | "+orders.getExp());
+                        });
 
                 System.out.println();
                 System.out.println("[ Total ]");
@@ -59,6 +64,7 @@ public class Kiosk {
                 System.out.println();
                 System.out.println("1. 주문 \t 2. 메뉴판");
                 int check = num.menuNumber();
+                System.out.println();
                 if (check == 1) {
                     System.out.println("할인 정보를 입력해주세요.");
                     System.out.println("1. 국가유공자 \t: 20%");
@@ -72,6 +78,7 @@ public class Kiosk {
                     double discountedPrice = discount.apply(originalPrice);
 
                     System.out.println("주문이 완료되었습니다. 금액은 W " + discountedPrice + " 입니다.");
+                    System.out.println();
                     orderList.removeOrder();
                     continue;
                 } else if (check == 2) {
