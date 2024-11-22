@@ -13,7 +13,8 @@ public enum Discount {
     }
 
     public double apply(double price){
-        return policy.calculate(price);
+        double discountedPrice = policy.calculate(price);
+        return Math.round(discountedPrice*100)/100.0;
     }
 
     public static Discount fromCode(int code){
