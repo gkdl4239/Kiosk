@@ -14,7 +14,6 @@ public class Database {
 
         // Drinks 카테고리 생성
         Menu Drinks = new Menu("Drinks");
-
         Drinks.setItem(new MenuItem("Sprite", 2.5, "청량한 스프라이트"));
         Drinks.setItem(new MenuItem("ZeroCoke", 2.5, "시원한 제로코카콜라"));
         Drinks.setItem(new MenuItem("Iced Tea", 3.0, "달콤한 아이스티"));
