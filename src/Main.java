@@ -6,4 +6,3 @@ public class Main {
         kiosk.start();
     }
 }
-
