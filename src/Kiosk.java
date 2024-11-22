@@ -30,6 +30,10 @@ public class Kiosk {
 
             int order = num.menuNumber();
 
+            if(order>=menuList.size() && orderList.getOrderList().isEmpty()){
+                throw new IllegalArgumentException("유효하지 않은 메뉴 입니다");
+            }
+
             if (order == 0) {
                 break;
             }
@@ -65,6 +69,7 @@ public class Kiosk {
                 System.out.println("1. 주문 \t 2. 메뉴판");
                 int check = num.menuNumber();
                 System.out.println();
+
                 if (check == 1) {
                     System.out.println("할인 정보를 입력해주세요.");
                     System.out.println("1. 국가유공자 \t: 20%");
