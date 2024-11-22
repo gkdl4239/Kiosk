@@ -45,9 +45,9 @@ public class Kiosk {
                 if (check == 1) {
                     System.out.println("할인 정보를 입력해주세요.");
                     System.out.println("1. 국가유공자 \t: 20%");
-                    System.out.println("2. 군인 \t: 10%");
-                    System.out.println("3. 학생 \t: 5%");
-                    System.out.println("4. 일반 \t: 0%");
+                    System.out.println("2. 군인 \t\t\t: 10%");
+                    System.out.println("3. 학생 \t\t\t: 5%");
+                    System.out.println("4. 일반 \t\t\t: 0%");
                     int discountCode = num.menuNumber();
                     double originalPrice = orderList.getTotalPrice();
                     Discount discount = Discount.fromCode(discountCode);
