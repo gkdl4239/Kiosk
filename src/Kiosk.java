@@ -27,7 +27,22 @@ public class Kiosk {
 
             int order = num.menuNumber();
 
-            if (order == j) {
+            if (order == 0) {
+                break;
+            }
+
+            else if( order > 0 && order <= menuList.size()){
+                Menu chosenMenu = menuList.get(order - 1);
+                int n = chosenMenu.showItem();
+                if(n!=-1) {
+                    MenuItem selectedItem = chosenMenu.getItem(n);
+                    if (selectedItem != null) {
+                        orderList.setOrderList(selectedItem);
+                    }
+                }
+            }
+
+            else if (order == j) {
                 System.out.println("아래와 같이 주문 하시겠습니까?");
                 System.out.println();
                 System.out.println("[ Orders ]");
@@ -48,6 +63,7 @@ public class Kiosk {
                     System.out.println("2. 군인 \t\t\t: 10%");
                     System.out.println("3. 학생 \t\t\t: 5%");
                     System.out.println("4. 일반 \t\t\t: 0%");
+
                     int discountCode = num.menuNumber();
                     double originalPrice = orderList.getTotalPrice();
                     Discount discount = Discount.fromCode(discountCode);
@@ -59,28 +75,20 @@ public class Kiosk {
                 } else if (check == 2) {
                     continue;
                 }
-            } else if (order == j + 1) {
+
+            }
+
+            else if (order == j + 1) {
                 orderList.removeOrder();
                 continue;
             }
 
-            System.out.println();
-
-            if (order == 0) {
-                break;
-            }else if (order > menuList.size()) {
+            else if (order > menuList.size()) {
                 System.out.println("유효한 메뉴를 입력하세요");
-            }else {
-                Menu chosenMenu = menuList.get(order - 1);
-                int n = chosenMenu.showItem();
-                if(n!=-1) {
-                    MenuItem selectedItem = chosenMenu.getItem(n);
-                    if (selectedItem != null) {
-                        orderList.setOrderList(selectedItem);
-                    }
-                }
-
             }
+
+
+            System.out.println();
         }
     }
 }
