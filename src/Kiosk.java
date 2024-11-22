@@ -9,6 +9,7 @@ public class Kiosk {
     public Kiosk(List<Menu> menuList){
         this.menuList = menuList;
     }
+
     public void start() {
         while(true){
             System.out.println("[ MAIN MENU ]");
@@ -47,7 +48,8 @@ public class Kiosk {
                 System.out.println();
                 System.out.println("[ Orders ]");
                 for (MenuItem orders : orderList.getOrderList()) {
-                    System.out.println(orders.getName() + "\t" + "| W " + orders.getPrice() + " | " + orders.getExp());
+                    String formatName = String.format("%-15s",orders.getName());
+                    System.out.println(formatName + "| W " + orders.getPrice() + " | " + orders.getExp());
                 }
 
                 System.out.println();
