@@ -1,5 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.IntStream;
+
 public class Menu {
     private final List<MenuItem> itemList = new ArrayList<>();
 
@@ -22,10 +24,13 @@ public class Menu {
 
     public int showItem(){
         System.out.println("[ "+this.categoryName.toUpperCase()+" MENU ]");
-        for(int i=0; i<itemList.size(); i++){
-            MenuItem m = itemList.get(i);
-            System.out.println((i+1)+". "+m.getName()+"\t"+"| W "+m.getPrice()+" | "+m.getExp());
-        }
+
+        IntStream.range(0,itemList.size())
+                .forEach(i->{
+                    MenuItem m = itemList.get(i);
+                    System.out.println((i+1)+". "+m.getName()+"\t"+"| W "+m.getPrice()+" | "+m.getExp());
+                });
+
         System.out.println("0. 뒤로가기");
         int num = choice.menuNumber();
         if(num==0){
