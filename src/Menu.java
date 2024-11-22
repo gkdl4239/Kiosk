@@ -26,7 +26,8 @@ public class Menu {
         IntStream.range(0,itemList.size())
                 .forEach(i->{
                     MenuItem m = itemList.get(i);
-                    System.out.println((i+1)+". "+m.getName()+"\t"+"| W "+m.getPrice()+" | "+m.getExp());
+                    String formatName = String.format("%-20s",m.getName());
+                    System.out.println((i+1)+". "+formatName+"| W "+m.getPrice()+" | "+m.getExp());
                 });
 
         System.out.println("0. 뒤로가기");

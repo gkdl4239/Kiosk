@@ -48,7 +48,7 @@ public class Kiosk {
                 System.out.println();
                 System.out.println("[ Orders ]");
                 for (MenuItem orders : orderList.getOrderList()) {
-                    String formatName = String.format("%-15s",orders.getName());
+                    String formatName = String.format("%-20s",orders.getName());
                     System.out.println(formatName + "| W " + orders.getPrice() + " | " + orders.getExp());
                 }
 
