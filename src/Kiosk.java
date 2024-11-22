@@ -71,16 +71,16 @@ public class Kiosk {
             } else if (order > menuList.size()) {
                 System.out.println("유효한 메뉴를 입력하세요");
                 continue;
-            }
+            }else{
+                Menu chosenMenu = menuList.get(order - 1);
+                int n = chosenMenu.showItem();
+                MenuItem selectedItem = chosenMenu.getItem(n);
+                if(selectedItem!=null){
+                    orderList.setOrderList(selectedItem);
+                }
 
-            Menu chosenMenu = menuList.get(order - 1);
-            int n = chosenMenu.showItem();
-            if (n != -1) {
-                MenuItem selctedItem = chosenMenu.getItem(n);
-                orderList.setOrderList(selctedItem);
             }
         }
-
     }
 }
 
