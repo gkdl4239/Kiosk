@@ -6,6 +6,7 @@ public class Kiosk {
 
     Orderitem orderList = new Orderitem();
     InputMenu num = new InputMenu();
+    Print print = new Print();
 
     public Kiosk(List<Menu> menuList){
         this.menuList = menuList;
@@ -13,33 +14,25 @@ public class Kiosk {
 
     public void start() {
         while(true){
-            System.out.println();
-            System.out.println("[ MAIN MENU ]");
-            for (int i = 1; i < menuList.size() + 1; i++) {
-                System.out.println(i + ". "+menuList.get(i-1).getCategoryName());
-            }
-            System.out.println("0. 종료");
+            print.printMainMenu(menuList);
 
-            int j = menuList.size()+1;
+            int orderMenuNumber = menuList.size()+1;
             if(!orderList.getOrderList().isEmpty()) {
-                System.out.println();
-                System.out.println("[ ORDER MENU ]");
-                System.out.println(j + ". Orders");
-                System.out.println((j+1) + ". Cancel");
+                print.printOrderMenu(orderMenuNumber);
             }
 
-            int order = num.menuNumber();
+            int orderCheck = num.menuNumber();
 
-            if(order>=menuList.size() && orderList.getOrderList().isEmpty()){
+            if(orderCheck>=menuList.size() && orderList.getOrderList().isEmpty()){
                 throw new IllegalArgumentException("유효하지 않은 메뉴 입니다");
             }
 
-            if (order == 0) {
+            if (orderCheck == 0) {
                 break;
             }
 
-            else if( order > 0 && order <= menuList.size()){
-                Menu chosenMenu = menuList.get(order - 1);
+            else if( orderCheck > 0 && orderCheck <= menuList.size()){
+                Menu chosenMenu = menuList.get(orderCheck - 1);
                 int n = chosenMenu.showItem();
                 if(n!=-1) {
                     MenuItem selectedItem = chosenMenu.getItem(n);
@@ -49,7 +42,7 @@ public class Kiosk {
                 }
             }
 
-            else if (order == j) {
+            else if (orderCheck == orderMenuNumber) {
                 System.out.println("아래와 같이 주문 하시겠습니까?");
                 System.out.println();
                 System.out.println("[ Orders ]");
@@ -67,37 +60,37 @@ public class Kiosk {
 
                 System.out.println();
                 System.out.println("1. 주문 \t 2. 메뉴판");
-                int check = num.menuNumber();
+                int totalCheck = num.menuNumber();
                 System.out.println();
 
-                if (check == 1) {
+                if (totalCheck == 1) {
                     System.out.println("할인 정보를 입력해주세요.");
                     System.out.println("1. 국가유공자 \t: 20%");
                     System.out.println("2. 군인 \t\t\t: 10%");
                     System.out.println("3. 학생 \t\t\t: 5%");
                     System.out.println("4. 일반 \t\t\t: 0%");
 
-                    int discountCode = num.menuNumber();
+                    int discountCheck = num.menuNumber();
                     double originalPrice = orderList.getTotalPrice();
-                    Discount discount = Discount.fromCode(discountCode);
+                    Discount discount = Discount.fromCode(discountCheck);
                     double discountedPrice = discount.apply(originalPrice);
 
                     System.out.println("주문이 완료되었습니다. 금액은 W " + discountedPrice + " 입니다.");
                     System.out.println();
                     orderList.removeOrder();
                     continue;
-                } else if (check == 2) {
+                } else if (totalCheck == 2) {
                     continue;
                 }
 
             }
 
-            else if (order == j + 1) {
+            else if (orderCheck == orderMenuNumber + 1) {
                 orderList.removeOrder();
                 continue;
             }
 
-            else if (order > menuList.size()) {
+            else if (orderCheck > menuList.size()) {
                 System.out.println("유효한 메뉴를 입력하세요");
             }
 
