@@ -32,7 +32,7 @@ public class Print {
         System.out.println((orderNumber+1) + ". Cancel");
     }
 
-    public void printTotalOrder(OrderItem orderList){
+    public void printTotalOrder(OrderList orderList){
         System.out.println("아래와 같이 주문 하시겠습니까?");
         System.out.println();
         System.out.println("[ Orders ]");
@@ -50,7 +50,7 @@ public class Print {
         System.out.println("W " + orderList.getTotalPrice());
 
         System.out.println();
-        System.out.println("1. 주문 \t 2. 메뉴판");
+        System.out.println("1. 주문 \t 2. 메뉴 추가 \t 3. 메뉴 빼기");
     }
 
     public void printDiscountChoice(){
