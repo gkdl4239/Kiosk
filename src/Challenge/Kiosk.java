@@ -28,87 +28,114 @@ public class Kiosk {
 
             int mainInput = num.menuNumber();
 
-            // 범위를 벗어나는 번호 입력시 예외 처리
-            if(check.isValidMenu(mainInput,menuList,orderList)){
-                throw new IllegalArgumentException("유효하지 않은 번호입니다!");
-            }
-
             // 0 입력시 종료
             if (mainInput == 0) {
                 break;
             }
 
-            // 메인 메뉴 선택 시 처리
-            else if(mainInput > 0 && mainInput <= menuList.size()){
-                Menu pickMenu = menuList.get(mainInput - 1);
-                pickMenu.showItem();
+            // 예외 처리 통합
+            try {
+                HandleMainProcess(mainInput);
+            } catch (InvalidMenuSelectionException e) {
+                System.out.println(e.getMessage());
+                System.out.println("처음부터 다시 시작해주세요.");
+            }
+        }
+    }
 
-                int pickItem = num.menuNumber();
+    private void HandleMainProcess(int mainInput){
 
-                // 메뉴 아이템 선택 시 처리
-                if(pickItem>0 && pickItem<=pickMenu.getItemList().size()) {
-                    MenuItem selectedItem = pickMenu.getItem(pickItem);
+        // 메인 메뉴 처리
+        if(mainInput > 0 && mainInput <= menuList.size()){
+            handleMenuSelection(mainInput);
+        }
 
-                    print.printWannaAdd(selectedItem);
+        // 오더 메뉴 처리
+        else if (mainInput == orderMenuNumber){
+            handleOrderMenu();
+        }
 
-                    int wannaAdd = num.menuNumber();
+        // 주문 초기화
+        else if (mainInput == orderMenuNumber + 1){
+            orderList.removeOrder();
+            System.out.println("장바구니를 비었습니다");
+        }
 
-                    // 장바구니에 추가
-                    if(wannaAdd==1){
-                        System.out.println(selectedItem.getName()+" 이 장바구니에 추가되었습니다.");
-                        orderList.setOrderList(selectedItem);
-                    }
+        // 예외
+        else{
+            throw new InvalidMenuSelectionException();
+        }
+    }
 
-                    // 취소
-                    else if(wannaAdd==2){
-                        System.out.println("취소되었습니다.");
-                    }
+    private void handleMenuSelection(int mainInput) {
 
-                    // 예외
-                    else{
-                        System.out.println("유효한 번호를 다시 선택해주세요");
-                        throw new IllegalArgumentException("유효하지 않은 번호입니다!");
-                    }
-                }
+        // 메인 메뉴 선택 시 처리
+        Menu pickMenu = menuList.get(mainInput - 1);
+        pickMenu.showItem();
+
+        int pickItem = num.menuNumber();
+
+        // 메뉴 아이템 선택 시 처리
+        if (pickItem > 0 && pickItem <= pickMenu.getItemList().size()) {
+            MenuItem selectedItem = pickMenu.getItem(pickItem);
+
+            print.printWannaAdd(selectedItem);
+
+            int wannaAdd = num.menuNumber();
+
+            // 장바구니에 추가
+            if (wannaAdd == 1) {
+                System.out.println(selectedItem.getName() + " 이 장바구니에 추가되었습니다.");
+                orderList.setOrderList(selectedItem);
             }
 
-            // 주문 선택 시 처리
-            else if (mainInput == orderMenuNumber) {
-                print.printTotalOrder(orderList);
-
-                int totalCheck = num.menuNumber();
-
-                // 주문 확정 시 할인 선택
-                if (totalCheck == 1) {
-                    print.printDiscountChoice();
-
-                    // Enum을 이용한 할인율 로직
-                    int discountCheck = num.menuNumber();
-                    double originalPrice = orderList.getTotalPrice();
-                    Discount discount = Discount.fromCode(discountCheck);
-                    double discountedPrice = discount.apply(originalPrice);
-
-                    print.printOrderCompleted(discountedPrice);
-
-                    orderList.removeOrder();
-                }
-
-                // 장바구니 메뉴 삭제
-                else if(totalCheck == 3){
-                    System.out.println();
-                    System.out.println("장바구니에서 삭제할 메뉴의 번호를 입력해주세요(다른 번호의 같은 메뉴도 삭제)");
-
-                    int removeItem = num.menuNumber();
-                    String name = orderList.getOrderList().get(removeItem-1).getName();
-                    orderList.removeByName(name);
-
-                }
+            // 취소
+            else if (wannaAdd == 2) {
+                System.out.println("취소되었습니다.");
             }
 
-            // 주문 초기화
-            else if (mainInput == orderMenuNumber + 1) {
-                orderList.removeOrder();
+            // 예외
+            else {
+                throw new InvalidMenuSelectionException();
             }
+        }
+
+        // 예외
+        else{
+            throw new InvalidMenuSelectionException();
+        }
+    }
+
+    private void handleOrderMenu() {
+        // 주문 선택 시 처리
+
+        print.printTotalOrder(orderList);
+
+        int totalCheck = num.menuNumber();
+
+        // 주문 확정 시 할인 선택
+        if (totalCheck == 1) {
+            print.printDiscountChoice();
+
+            // Enum을 이용한 할인율 로직
+            int discountCheck = num.menuNumber();
+            double originalPrice = orderList.getTotalPrice();
+            Discount discount = Discount.fromCode(discountCheck);
+            double discountedPrice = discount.apply(originalPrice);
+
+            print.printOrderCompleted(discountedPrice);
+
+            orderList.removeOrder();
+        }
+
+        // 장바구니 메뉴 삭제
+        else if (totalCheck == 3) {
+            System.out.println();
+            System.out.println("장바구니에서 삭제할 메뉴의 번호를 입력해주세요(다른 번호의 같은 메뉴도 삭제)");
+
+            int removeItem = num.menuNumber();
+            String name = orderList.getOrderList().get(removeItem - 1).getName();
+            orderList.removeByName(name);
         }
     }
 }
