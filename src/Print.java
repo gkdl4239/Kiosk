@@ -11,6 +11,20 @@ public class Print {
         System.out.println("0. 종료");
     }
 
+    public void printMenuItemList(List<MenuItem> itemList,String categoryName){
+        System.out.println();
+        System.out.println("[ "+categoryName.toUpperCase()+" MENU ]");
+
+        IntStream.range(0,itemList.size())
+                .forEach(i->{
+                    MenuItem m = itemList.get(i);
+                    String formatName = String.format("%-20s",m.getName());
+                    System.out.println((i+1)+". "+formatName+"| W "+m.getPrice()+" | "+m.getExp());
+                });
+
+        System.out.println("0. 뒤로가기");
+    }
+
     public void printOrderMenu(int orderNumber){
         System.out.println();
         System.out.println("[ ORDER MENU ]");
@@ -23,6 +37,7 @@ public class Print {
         System.out.println();
         System.out.println("[ Orders ]");
 
+        // 장바구니가 들어있는 리스트에서 차례대로 정보 출력
         IntStream.range(0,orderList.getOrderList().size())
                 .forEach(i->{
                     MenuItem orders = orderList.getOrderList().get(i);
