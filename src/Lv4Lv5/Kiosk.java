@@ -33,8 +33,11 @@ public class Kiosk {
 
                 int itemNumber = sc.nextInt();
 
+                if(itemNumber == 0){
+                    System.out.println("뒤로가기를 눌렀습니다.");
+                }
 
-                if(itemNumber>0 && itemNumber<=menu.getMenuList().size()){
+                else if(itemNumber>0 && itemNumber<=menu.getMenuList().size()){
                     MenuItem pickMenu = menu.getMenuList().get(itemNumber);
                     System.out.println();
                     System.out.println("선택한 메뉴: "+pickMenu.getName()+" | W "+pickMenu.getPrice()+" | "+pickMenu.getExp());
