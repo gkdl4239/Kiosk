@@ -17,6 +17,7 @@ public enum Discount {
         return Math.round(discountedPrice*100)/100.0;
     }
 
+    // 할인 선택시 비교 후 반환
     public static Discount fromCode(int code){
         for(Discount discount : values()){
             if(discount.code == code){
