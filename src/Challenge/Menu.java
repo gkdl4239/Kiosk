@@ -7,7 +7,6 @@ public class Menu {
     private final List<MenuItem> itemList = new ArrayList<>();
     private final String categoryName;
 
-    InputMenu choice = new InputMenu();
     Print print = new Print();
 
     Menu(String categoryName){
