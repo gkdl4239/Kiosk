@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Kiosk {
-    private List<Menu> menuList;
+    private final List<Menu> menuList;
 
     public Kiosk(List<Menu> menuList){
         this.menuList = menuList;
@@ -33,11 +33,8 @@ public class Kiosk {
 
                 int itemNumber = sc.nextInt();
 
-                if(itemNumber == 0){
-                    continue;
-                }
 
-                else if(itemNumber>0 && itemNumber<=menu.getMenuList().size()){
+                if(itemNumber>0 && itemNumber<=menu.getMenuList().size()){
                     MenuItem pickMenu = menu.getMenuList().get(itemNumber);
                     System.out.println();
                     System.out.println("선택한 메뉴: "+pickMenu.getName()+" | W "+pickMenu.getPrice()+" | "+pickMenu.getExp());
