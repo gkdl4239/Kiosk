@@ -21,6 +21,12 @@ public class OrderList {
         return sum;
     }
 
+    // 스트림을 활용하여 이름으로 장바구니메뉴 삭제하는 메서드
+    public void removeByName(String name){
+        this.orderItems = orderItems.stream()
+                .filter(item -> !item.getName().equals(name))
+                .collect(Collectors.toList());
+    }
 
     public void removeOrder(){
         this.orderItems.clear();

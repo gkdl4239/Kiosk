@@ -4,7 +4,7 @@ public class Kiosk {
     private final List<Menu> menuList;
     private final int orderMenuNumber;
 
-    OrderItem orderList = new OrderItem();
+    OrderList orderList = new OrderList();
     InputMenu num = new InputMenu();
     Print print = new Print();
     Check check = new Check();
@@ -71,6 +71,16 @@ public class Kiosk {
                     print.printOrderCompleted(discountedPrice);
 
                     orderList.removeOrder();
+                }
+
+                else if(totalCheck == 3){
+                    System.out.println();
+                    System.out.println("장바구니에서 삭제할 메뉴의 번호를 입력해주세요(다른 번호의 같은 메뉴도 삭제)");
+
+                    int removeItem = num.menuNumber();
+                    String name = orderList.getOrderList().get(removeItem-1).getName();
+                    orderList.removeByName(name);
+
                 }
             }
 
