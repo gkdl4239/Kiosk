@@ -7,6 +7,7 @@ public class Menu {
     private final String categoryName;
 
     InputMenu choice = new InputMenu();
+    Print print = new Print();
 
     Menu(String categoryName){
         this.categoryName = categoryName;
@@ -40,16 +41,14 @@ public class Menu {
     }
 
     public MenuItem getItem(int menuChoice){
-        MenuItem m = itemList.get(menuChoice-1);
-        System.out.println();
-        System.out.println("선택한 메뉴: "+m.getName()+" | W "+m.getPrice()+" | "+m.getExp());
-        System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
-        System.out.println("1. 확인\t 2. 취소");
+        MenuItem selected = itemList.get(menuChoice-1);
+        print.printWannaAdd(selected);
+
         int wannaAdd = choice.menuNumber();
 
         if(wannaAdd==1){
-            System.out.println(m.getName()+" 이 장바구니에 추가되었습니다.");
-            return m;
+            System.out.println(selected.getName()+" 이 장바구니에 추가되었습니다.");
+            return selected;
         }
 
         else if(wannaAdd==2){
