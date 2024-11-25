@@ -1,6 +1,7 @@
+package Challenge;
+
 import java.util.List;
 import java.util.ArrayList;
-import java.util.stream.IntStream;
 
 public class Menu {
     private final List<MenuItem> itemList = new ArrayList<>();

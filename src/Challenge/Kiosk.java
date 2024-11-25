@@ -1,3 +1,5 @@
+package Challenge;
+
 import java.util.List;
 
 public class Kiosk {

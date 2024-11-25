@@ -1,3 +1,5 @@
+package Challenge;
+
 public class MenuItem {
     private final String name;
     private final double price;

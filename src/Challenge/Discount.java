@@ -1,3 +1,5 @@
+package Challenge;
+
 public enum Discount {
     NATIONALMERIT(1,price -> price *0.8),
     SOLDIER(2,price->price*0.9),
