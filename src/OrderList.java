@@ -1,25 +1,28 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class OrderItem {
-    private final List<MenuItem> orderList = new ArrayList<>();
+public class OrderList {
+    private List<MenuItem> orderItems = new ArrayList<>();
 
     public void setOrderList(MenuItem menu){
-        this.orderList.add(menu);
+        this.orderItems.add(menu);
     }
 
     public List<MenuItem> getOrderList(){
-        return this.orderList;
+        return this.orderItems;
     }
 
     public double getTotalPrice(){
         double sum = 0;
-        for(MenuItem item : this.orderList){
+        for(MenuItem item : this.orderItems){
             sum+=item.getPrice();
         }
         return sum;
     }
+
+
     public void removeOrder(){
-        this.orderList.clear();
+        this.orderItems.clear();
     }
 }
