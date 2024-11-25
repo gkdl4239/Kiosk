@@ -1,9 +1,10 @@
 package Level1;
+
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
-        while(true){
+    public static void main(String[] args) {
+        while (true) {
             System.out.println("[ SHAKESHACK MENU ]");
             System.out.println("1. ShackBurger  \t | W 6.9 | 토마토, 양상추, 쉑소스가 토핑된 치즈버거");
             System.out.println("2. SmokeShack    | W 8.9 | 베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거");
