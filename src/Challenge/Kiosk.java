@@ -37,7 +37,7 @@ public class Kiosk {
             try {
                 // 장바구니가 비었을 때 오더 메뉴 입력시 예외
                 check.isValidOrder(orderList,mainInput,orderMenuNumber);
-                HandleMainProcess(mainInput);
+                startMainProcess(mainInput);
             } catch (InvalidMenuSelectionException e) {
                 System.out.println(e.getMessage());
                 System.out.println("처음부터 다시 시작해주세요.");
@@ -45,7 +45,7 @@ public class Kiosk {
         }
     }
 
-    private void HandleMainProcess(int mainInput){
+    private void startMainProcess(int mainInput){
 
         // 메인 메뉴 처리
         if(mainInput > 0 && mainInput <= menuList.size()){
