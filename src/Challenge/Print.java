@@ -52,7 +52,7 @@ public class Print {
         System.out.println("W " + orderList.getTotalPrice());
 
         System.out.println();
-        System.out.println("1. 주문 \t 2. 메뉴 추가 \t 3. 메뉴 빼기");
+        System.out.println("1. 주문  2. 메뉴 추가  3. 메뉴 빼기");
     }
 
     public void printDiscountChoice(){
