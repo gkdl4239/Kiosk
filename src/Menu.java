@@ -22,21 +22,15 @@ public class Menu {
     }
 
     public int showItem(){
-        System.out.println();
-        System.out.println("[ "+this.categoryName.toUpperCase()+" MENU ]");
-
-        IntStream.range(0,itemList.size())
-                .forEach(i->{
-                    MenuItem m = itemList.get(i);
-                    String formatName = String.format("%-20s",m.getName());
-                    System.out.println((i+1)+". "+formatName+"| W "+m.getPrice()+" | "+m.getExp());
-                });
-
-        System.out.println("0. 뒤로가기");
+        print.printMenuItemList(itemList,this.categoryName);
         int num = choice.menuNumber();
+
+        // 뒤로가기 처리
         if(num==0){
             return -1;
         }
+
+        // 선택한 메뉴 번호 반환
         return num;
     }
 
