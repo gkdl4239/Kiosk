@@ -12,6 +12,7 @@ public enum Discount {
         this.policy = policy;
     }
 
+    // 할인율에 맞게 계산후 소수점 두자리까지 반올림
     public double apply(double price){
         double discountedPrice = policy.calculate(price);
         return Math.round(discountedPrice*100)/100.0;

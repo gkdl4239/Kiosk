@@ -73,6 +73,7 @@ public class Kiosk {
                     orderList.removeOrder();
                 }
 
+                // 장바구니 메뉴 삭제
                 else if(totalCheck == 3){
                     System.out.println();
                     System.out.println("장바구니에서 삭제할 메뉴의 번호를 입력해주세요(다른 번호의 같은 메뉴도 삭제)");

@@ -13,6 +13,7 @@ public class OrderList {
         return this.orderItems;
     }
 
+    // 총 금액 계산
     public double getTotalPrice(){
         double sum = 0;
         for(MenuItem item : this.orderItems){
