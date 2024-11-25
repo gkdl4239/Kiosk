@@ -40,16 +40,34 @@ public class Kiosk {
 
             // 메인 메뉴 선택 시 처리
             else if(mainInput > 0 && mainInput <= menuList.size()){
-                Menu chosenMenu = menuList.get(mainInput - 1);
-                int n = chosenMenu.showItem();
+                Menu pickMenu = menuList.get(mainInput - 1);
+                pickMenu.showItem();
+
+                int pickItem = num.menuNumber();
 
                 // 메뉴 아이템 선택 시 처리
-                if(n!=-1) {
-                    MenuItem selectedItem = chosenMenu.getItem(n);
+                if(pickItem>0 && pickItem<=pickMenu.getItemList().size()) {
+                    MenuItem selectedItem = pickMenu.getItem(pickItem);
 
-                    // 장바구니에 추가했다면 리스트에도 추가
-                    if (selectedItem != null) {
+                    print.printWannaAdd(selectedItem);
+
+                    int wannaAdd = num.menuNumber();
+
+                    // 장바구니에 추가
+                    if(wannaAdd==1){
+                        System.out.println(selectedItem.getName()+" 이 장바구니에 추가되었습니다.");
                         orderList.setOrderList(selectedItem);
+                    }
+
+                    // 취소
+                    else if(wannaAdd==2){
+                        System.out.println("취소되었습니다.");
+                    }
+
+                    // 예외
+                    else{
+                        System.out.println("유효한 번호를 다시 선택해주세요");
+                        throw new IllegalArgumentException("유효하지 않은 번호입니다!");
                     }
                 }
             }
