@@ -130,13 +130,27 @@ public class Kiosk {
             orderList.removeOrder();
         }
 
+        else if (totalCheck == 2){
+            print.printSelectAddition();
+        }
+
         // 장바구니 메뉴 삭제
         else if (totalCheck == 3) {
             print.printRemoveNumber();
 
             int removeItem = num.menuNumber();
+
+            //예외
+            if(removeItem >=orderList.getOrderList().size()){
+                throw new InvalidMenuSelectionException();
+            }
+
             String name = orderList.getOrderList().get(removeItem - 1).getName();
             orderList.removeByName(name);
+        }
+
+        else{
+            throw new InvalidMenuSelectionException();
         }
     }
 }
