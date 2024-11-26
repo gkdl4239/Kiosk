@@ -97,4 +97,8 @@ public class Print {
         System.out.println(e.getMessage());
         System.out.println("처음부터 다시 시작해주세요.");
     }
+
+    public void printSelectAddition(){
+        System.out.println("메뉴 추가를 선택하셨습니다.");
+    }
 }
