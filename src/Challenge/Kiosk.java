@@ -35,16 +35,17 @@ public class Kiosk {
 
             // 예외 처리 통합
             try {
-                // 장바구니가 비었을 때 오더 메뉴 입력시 예외
-                check.isValidOrder(orderList,mainInput,orderMenuNumber);
+                check.isValidOrder(orderList,mainInput,orderMenuNumber); // 장바구니가 비었을 때 오더 메뉴 입력시 예외
                 startMainProcess(mainInput);
-            } catch (InvalidMenuSelectionException e) {
+            }
+            catch (InvalidMenuSelectionException e) {
                 System.out.println(e.getMessage());
                 System.out.println("처음부터 다시 시작해주세요.");
             }
         }
     }
 
+    // 핵심 프로세스
     private void startMainProcess(int mainInput){
 
         // 메인 메뉴 처리
@@ -69,9 +70,9 @@ public class Kiosk {
         }
     }
 
+    // 메인 메뉴 선택 시 처리
     private void handleMenuSelection(int mainInput) {
 
-        // 메인 메뉴 선택 시 처리
         Menu pickMenu = menuList.get(mainInput - 1);
         pickMenu.showItem();
 
@@ -108,8 +109,8 @@ public class Kiosk {
         }
     }
 
+    // 주문 선택 시 처리
     private void handleOrderMenu() {
-        // 주문 선택 시 처리
 
         print.printTotalOrder(orderList);
 
