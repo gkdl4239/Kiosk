@@ -9,7 +9,7 @@ public class Menu {
 
     Print print = new Print();
 
-    Menu(String categoryName){
+    Menu(String categoryName) {
         this.categoryName = categoryName;
     }
 
@@ -17,20 +17,20 @@ public class Menu {
         return categoryName;
     }
 
-    public void setItem(MenuItem m){
+    public void setItem(MenuItem m) {
         this.itemList.add(m);
     }
 
-    public void showItem(){
-        print.printMenuItemList(itemList,this.categoryName);
+    public void showItem() {
+        print.printMenuItemList(itemList, this.categoryName);
     }
 
-    public List<MenuItem> getItemList(){
+    public List<MenuItem> getItemList() {
         return this.itemList;
     }
 
-    public MenuItem getItem(int menuChoice){
-        return itemList.get(menuChoice-1);
+    public MenuItem getItem(int menuChoice) {
+        return itemList.get(menuChoice - 1);
     }
 }
 

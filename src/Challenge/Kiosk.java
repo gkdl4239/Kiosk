@@ -11,18 +11,18 @@ public class Kiosk {
     Print print = new Print();
     Check check = new Check();
 
-    public Kiosk(List<Menu> menuList){
+    public Kiosk(List<Menu> menuList) {
         this.menuList = menuList;
-        this.orderMenuNumber = menuList.size()+1;
+        this.orderMenuNumber = menuList.size() + 1;
     }
 
     public void start() {
-        while(true){
+        while (true) {
             // MAIN MENU 출력
             print.printMainMenu(menuList);
 
             // 장바구니에 메뉴가 들어있으면 ORDER MENU 출력
-            if(check.isOrderListEmpty(orderList)) {
+            if (check.isOrderListEmpty(orderList)) {
                 print.printOrderMenu(orderMenuNumber);
             }
 
@@ -35,36 +35,35 @@ public class Kiosk {
 
             // 예외 처리 통합
             try {
-                check.isValidOrder(orderList,mainInput,orderMenuNumber); // 장바구니가 비었을 때 오더 메뉴 입력시 예외
+                check.isValidOrder(orderList, mainInput, orderMenuNumber); // 장바구니가 비었을 때 오더 메뉴 입력시 예외
                 startMainProcess(mainInput);
-            }
-            catch (InvalidMenuSelectionException e) {
+            } catch (InvalidMenuSelectionException e) {
                 print.printError(e);
             }
         }
     }
 
     // 핵심 프로세스
-    private void startMainProcess(int mainInput){
+    private void startMainProcess(int mainInput) {
 
         // 메인 메뉴 처리
-        if(mainInput > 0 && mainInput <= menuList.size()){
+        if (mainInput > 0 && mainInput <= menuList.size()) {
             handleMenuSelection(mainInput);
         }
 
         // 오더 메뉴 처리
-        else if (mainInput == orderMenuNumber){
+        else if (mainInput == orderMenuNumber) {
             handleOrderMenu();
         }
 
         // 주문 초기화
-        else if (mainInput == orderMenuNumber + 1){
+        else if (mainInput == orderMenuNumber + 1) {
             orderList.removeOrder();
             print.printResetOrder();
         }
 
         // 예외
-        else{
+        else {
             throw new InvalidMenuSelectionException();
         }
     }
@@ -103,7 +102,7 @@ public class Kiosk {
         }
 
         // 예외
-        else{
+        else {
             throw new InvalidMenuSelectionException();
         }
     }
@@ -128,9 +127,7 @@ public class Kiosk {
             print.printOrderCompleted(discountedPrice);
 
             orderList.removeOrder();
-        }
-
-        else if (totalCheck == 2){
+        } else if (totalCheck == 2) {
             print.printSelectAddition();
         }
 
@@ -141,15 +138,13 @@ public class Kiosk {
             int removeItem = num.menuNumber();
 
             //예외
-            if(removeItem >=orderList.getOrderList().size()){
+            if (removeItem >= orderList.getOrderList().size()) {
                 throw new InvalidMenuSelectionException();
             }
 
             String name = orderList.getOrderList().get(removeItem - 1).getName();
             orderList.removeByName(name);
-        }
-
-        else{
+        } else {
             throw new InvalidMenuSelectionException();
         }
     }

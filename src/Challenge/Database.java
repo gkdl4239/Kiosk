@@ -6,7 +6,7 @@ import java.util.List;
 public class Database {
     private static final List<Menu> menuList = new ArrayList<>();
 
-    static{
+    static {
         // Burger 카테고리 생성
         Menu Burger = new Menu("Burger");
         Burger.setItem(new MenuItem("ShackBurger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
@@ -31,7 +31,7 @@ public class Database {
         menuList.add(Desserts);
     }
 
-    public static List<Menu> getMenuList(){
+    public static List<Menu> getMenuList() {
         return menuList;
     }
 }
