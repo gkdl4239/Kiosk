@@ -75,4 +75,26 @@ public class Print {
         System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
         System.out.println("1. 확인\t 2. 취소");
     }
+
+    public void printAddComplete(MenuItem selectedItem){
+        System.out.println(selectedItem.getName() + " 이 장바구니에 추가되었습니다.");
+    }
+
+    public void printRemoveNumber(){
+        System.out.println();
+        System.out.println("장바구니에서 삭제할 메뉴의 번호를 입력해주세요(다른 번호의 같은 메뉴도 삭제)");
+    }
+
+    public void printCanceled(){
+        System.out.println("취소되었습니다.");
+    }
+
+    public void printResetOrder(){
+        System.out.println("장바구니를 비웠습니다");
+    }
+
+    public void printError(InvalidMenuSelectionException e){
+        System.out.println(e.getMessage());
+        System.out.println("처음부터 다시 시작해주세요.");
+    }
 }

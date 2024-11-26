@@ -39,8 +39,7 @@ public class Kiosk {
                 startMainProcess(mainInput);
             }
             catch (InvalidMenuSelectionException e) {
-                System.out.println(e.getMessage());
-                System.out.println("처음부터 다시 시작해주세요.");
+                print.printError(e);
             }
         }
     }
@@ -61,7 +60,7 @@ public class Kiosk {
         // 주문 초기화
         else if (mainInput == orderMenuNumber + 1){
             orderList.removeOrder();
-            System.out.println("장바구니를 비었습니다");
+            print.printResetOrder();
         }
 
         // 예외
@@ -88,13 +87,13 @@ public class Kiosk {
 
             // 장바구니에 추가
             if (wannaAdd == 1) {
-                System.out.println(selectedItem.getName() + " 이 장바구니에 추가되었습니다.");
+                print.printAddComplete(selectedItem);
                 orderList.setOrderList(selectedItem);
             }
 
             // 취소
             else if (wannaAdd == 2) {
-                System.out.println("취소되었습니다.");
+                print.printCanceled();
             }
 
             // 예외
@@ -133,8 +132,7 @@ public class Kiosk {
 
         // 장바구니 메뉴 삭제
         else if (totalCheck == 3) {
-            System.out.println();
-            System.out.println("장바구니에서 삭제할 메뉴의 번호를 입력해주세요(다른 번호의 같은 메뉴도 삭제)");
+            print.printRemoveNumber();
 
             int removeItem = num.menuNumber();
             String name = orderList.getOrderList().get(removeItem - 1).getName();
