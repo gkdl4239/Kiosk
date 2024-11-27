@@ -1,4 +1,4 @@
-package Challenge;
+package Challenge.Domain;
 
 public enum Discount {
     NATIONALMERIT(1, price -> price * 0.8),

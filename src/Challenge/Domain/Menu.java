@@ -1,4 +1,6 @@
-package Challenge;
+package Challenge.Domain;
+
+import Challenge.Util.Print;
 
 import java.util.List;
 import java.util.ArrayList;

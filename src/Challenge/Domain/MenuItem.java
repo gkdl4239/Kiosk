@@ -1,4 +1,4 @@
-package Challenge;
+package Challenge.Domain;
 
 public class MenuItem {
     private final String name;

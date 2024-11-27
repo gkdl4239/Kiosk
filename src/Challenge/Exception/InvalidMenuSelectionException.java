@@ -1,4 +1,4 @@
-package Challenge;
+package Challenge.Exception;
 
 public class InvalidMenuSelectionException extends IllegalArgumentException {
     public InvalidMenuSelectionException() {

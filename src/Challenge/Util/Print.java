@@ -1,4 +1,9 @@
-package Challenge;
+package Challenge.Util;
+
+import Challenge.Exception.InvalidMenuSelectionException;
+import Challenge.Domain.Menu;
+import Challenge.Domain.MenuItem;
+import Challenge.Domain.OrderList;
 
 import java.util.List;
 import java.util.stream.IntStream;
