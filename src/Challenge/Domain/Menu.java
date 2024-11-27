@@ -11,6 +11,7 @@ public class Menu {
 
     Print print = new Print();
 
+    // 카테고리 이름 주입
     Menu(String categoryName) {
         this.categoryName = categoryName;
     }
@@ -19,6 +20,7 @@ public class Menu {
         return categoryName;
     }
 
+    // Setter
     public void setItem(MenuItem m) {
         this.itemList.add(m);
     }
@@ -27,10 +29,12 @@ public class Menu {
         print.printMenuItemList(itemList, this.categoryName);
     }
 
+    // Getter
     public List<MenuItem> getItemList() {
         return this.itemList;
     }
 
+    // Getter
     public MenuItem getItem(int menuChoice) {
         return itemList.get(menuChoice - 1);
     }

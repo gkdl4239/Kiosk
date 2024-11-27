@@ -30,6 +30,7 @@ public enum Discount {
         throw new IllegalArgumentException("유효하지 않는 번호입니다");
     }
 
+    // 각 상수마다 연산을 위한 인터페이스 선언
     interface DiscountPolicy {
         double calculate(double price);
     }

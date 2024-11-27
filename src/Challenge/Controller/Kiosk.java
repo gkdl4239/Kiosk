@@ -43,9 +43,14 @@ public class Kiosk {
 
             // 예외 처리 통합
             try {
-                check.isValidOrder(orderList, mainInput, orderMenuNumber); // 장바구니가 비었을 때 오더 메뉴 입력시 예외
+                // 장바구니가 비었을 때 ORDER 메뉴 입력시 예외 처리
+                check.isValidOrder(orderList, mainInput, orderMenuNumber);
+
+                // 메인 프로세스
                 Handler handle = new Handler(mainInput, orderMenuNumber, menuList, orderList);
                 handle.startMainProcess();
+
+                // 도중 예외시 검사
             } catch (InvalidMenuSelectionException e) {
                 print.printError(e);
             }

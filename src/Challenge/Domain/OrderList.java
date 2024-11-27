@@ -31,6 +31,7 @@ public class OrderList {
                 .collect(Collectors.toList());
     }
 
+    // 장바구니 초기화
     public void removeOrder() {
         this.orderItems.clear();
     }
